@@ -1,7 +1,5 @@
 package com.sherwin.credochain.model;
 
-import java.util.Date;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,21 +11,24 @@ public class Task {
 	private String description;
 	private String assignedTo;
 	private String completedOn;
-	private String Status;
-	
-	public Task(int taskId, String title, String description, String assignedTo, String completedOn, String status) {
+	private TaskStatus status;
+
+	public Task() {
+		super();
+	}
+
+
+	public Task(int taskId, String title, String description, String assignedTo, String completedOn,
+			TaskStatus status) {
 		super();
 		this.taskId = taskId;
 		this.title = title;
 		this.description = description;
 		this.assignedTo = assignedTo;
 		this.completedOn = completedOn;
-		Status = status;
+		this.status = status;
 	}
-	
-	public Task() {
-		super();
-	}
+
 
 	public int getTaskId() {
 		return taskId;
@@ -69,12 +70,11 @@ public class Task {
 		this.completedOn = completedOn;
 	}
 
-	public String getStatus() {
-		return Status;
+	public TaskStatus getStatus() {
+		return status;
 	}
 
-	public void setStatus(String status) {
-		Status = status;
+	public void setStatus(TaskStatus status) {
+		this.status = status;
 	}
-	
 }
